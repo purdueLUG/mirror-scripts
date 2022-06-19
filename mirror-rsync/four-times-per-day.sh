@@ -100,32 +100,15 @@ startUpdate "debian-cd" "cdimage.debian.org::debian-cd"
 startUpdateApt "mint" "rsync-packages.linuxmint.com::packages"
 startUpdate "mint-images" "pub.linuxmint.com::pub"
 
-#ArchLinux
-#startUpdate "archlinux" "mirrors.kernel.org::archlinux"
-
 #Ubuntu
-#startUpdateAptUbuntu "ubuntu" "archive.ubuntu.com::ubuntu"
 screen -dmS ubuntu /home/plug/ftpsync-ubuntu/bin/ftpsync
 startUpdateUbuntuCD "ubuntu-cd" "cdimage.ubuntu.com::cdimage"
 startUpdate "ubuntu-cloud" "cloud-images.ubuntu.com::cloud-images"
 startUpdateApt "ubuntu-ports" "ports.ubuntu.com::ubuntu-ports"
 startUpdateUbuntuCD "ubuntu-releases" "releases.ubuntu.com::releases"
 
-#CentOS - NOT TOP SITE
-#startUpdate "centos" "mirror.team-cymru.com::CentOS"
-
-#FreeBSD - NOT TOP SITE
-#startUpdate "freebsd" "ftp6.us.freebsd.org::FreeBSD"
-
-#Kali - NOT TOP SITE, UNABLE TO ACCESS
-#startUpdateApt "kali" "archive.linux.duke.edu::kali"
-#startUpdate "kali-images" "archive.linux.duke.edu::kali-images"
-
 #OpenBSD
 startUpdate "openbsd" "ftp.usa.openbsd.org::ftp"
-
-#Gentoo
-#startUpdate "gentoo" "masterdistfiles.gentoo.org::gentoo"
 
 #OpenSUSE
 startUpdate "opensuse" "stage.opensuse.org::opensuse-full-really-everything-including-repositories/opensuse/"
@@ -133,18 +116,11 @@ startUpdate "opensuse" "stage.opensuse.org::opensuse-full-really-everything-incl
 #Tails - NOT TOP SITE?
 startUpdate "tails" "mirrors.rsync.tails.boum.org::amnesia-archive/tails/"
 
-#CygWin
-#startUpdate "cygwin" "cygwin.com::cygwin-ftp"
-
 #Manjaro - NOT TOP SITE
-#startUpdate "manjaro" "repo.manjaro.org::repos"
 startUpdate "manjaro" "ftp.halifax.rwth-aachen.de::manjaro"
 
 #Adelie
 startUpdate "adelie" "mirrormaster.adelielinux.org::distfiles"
-
-#Void
-#startUpdate "void" "alpha.us.repo.voidlinux.org::repo"
 
 #Qubes
 startUpdate "qubes" "ftp.qubes-os.org::qubes-mirror"
@@ -162,16 +138,9 @@ startUpdate "osdn" "master.dl.osdn.net::download"
 #VLC - is top site
 startUpdate "vlc" "rsync.videolan.org::videolan-ftp"
 
-#Fdroid
+#Fdroid - push based now
 #startUpdateFDROID "repo" "fdroid-mirror@mirror.f-droid.org::repo"
 #startUpdateFDROID "archive" "fdroid-mirror@mirror.f-droid.org::archive"
-##startUpdateFDROID "fdroid" "ftp.fau.de::fdroid"
-
-#OpenWRT
-#startUpdate "openwrt" "downloads.openwrt.org::downloads"
-
-#TDF (LibreOffice)
-#startUpdate "tdf" "rsync.documentfoundation.org::tdf-pub"
 
 #CentOS - NOT TOP SITE
 startUpdate "centos" "bay.uchicago.edu::CentOS"
