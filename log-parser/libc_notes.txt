@@ -1,0 +1,5 @@
+You'll need to tell go to not build using local libc, as that isn't going to work on the mirror's version of libc 
+
+
+export CGO_ENABLED=0
+
