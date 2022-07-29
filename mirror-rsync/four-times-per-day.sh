@@ -35,6 +35,21 @@ startUpdateFDROID () {
 
 }
 
+startUpdateCBSD () {
+
+        #Assumes $1 is the distribution name (as used for temporary and main index) and $2 is the mirror source
+        LOCKOUT=/home/plug/mirror-locks/cbsd-$1
+        EXECUTESTRING="touch $LOCKOUT; rsync --archive --verbose --times --links --hard-links --delete --delete-after --delay-updates --log-file /home/plug/rsync-logs/cbsd/$1.log --safe-links $2 /mirror/mirror/cbsd/$1/; rm $LOCKOUT" 
+
+        if [ -f "$LOCKOUT" ]; then
+                echo "LOCKOUT FILE FOUND FOR $1 ON $(date), NOT UPDATING" >> /home/plug/mirror-errorlog
+        else
+                rm /home/plug/rsync-logs/cbsd-$1.log
+                screen -dmS $1 -m bash -c "$EXECUTESTRING"
+                echo "Ran update for $1 ON $(date)" >> /home/plug/mirror-updatelog
+        fi
+
+}
 
 startUpdateApt () { #For distros that use apt. *only* needed for the package repos - *DO NOT USE FOR CD REPOS*
 
@@ -152,3 +167,7 @@ startUpdate "rocky" "mirrors.rit.edu::rocky"
 export RSYNC_PASSWORD="<removed>"
 startUpdate "termux" "rsync@grimler.se::termux"
 unset RSYNC_PASSWORD
+
+#CBSD
+startUpdateCBSD "iso" "electro.bsdstore.ru::iso"
+startUpdateCBSD "cloud" "electro.bsdstore.ru::cloud"
