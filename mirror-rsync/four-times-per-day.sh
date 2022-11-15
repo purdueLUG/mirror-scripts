@@ -163,6 +163,9 @@ startUpdate "centos" "bay.uchicago.edu::CentOS"
 #Rocky - NOT TOP SITE
 startUpdate "rocky" "mirrors.rit.edu::rocky"
 
+# AlmaLinux
+startUpdate "almalinux" "rsync.repo.almalinux.org::almalinux"
+
 #Termux (not tmux) Android terminal emulator thing
 export RSYNC_PASSWORD="<removed>"
 startUpdate "termux" "rsync@grimler.se::termux"
