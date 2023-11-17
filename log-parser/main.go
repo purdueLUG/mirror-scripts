@@ -29,9 +29,12 @@ var (
 	distributions        = map[string]bool{            //A map of the distributions we actually mirror. If it isn't here, it will be discarded as background traffic.
 		"adelie":            true,
 		"alpine":            true,
-                "almalinux":         true,
+		"almalinux":         true,
 		"archlinux":         true,
+		"blender":           true,
 		"cbsd":              true,
+		"cbsd-cloud":        true,
+		"cbsd-iso":          true,
 		"centos":            true,
 		"debian":            true,
 		"debian-archive":    true,

@@ -104,6 +104,21 @@ startUpdateUbuntuCD () {
 
 }
 
+startUpdateBLENDER () {
+
+        #Assumes $1 is the distribution name (as used for temporary and main index) and $2 is the mirror source
+        LOCKOUT=/home/plug/mirror-locks/blender-$1
+        EXECUTESTRING="touch $LOCKOUT; RSYNC_PASSWORD=<redacted> rsync --archive --verbose --times --links --hard-links --delete --delete-after --delay-updates --log-file /home/plug/rsync-logs/blender-$1.log --safe-links <user>@$2 /mirror/mirror/blender/$1/; rm $LOCKOUT" 
+        if [ -f "$LOCKOUT" ]; then
+                echo "LOCKOUT FILE FOUND FOR $1 ON $(date), NOT UPDATING" >> /home/plug/mirror-errorlog
+        else
+                rm /home/plug/rsync-logs/blender-$1.log
+                screen -dmS blender-$1 -m bash -c "$EXECUTESTRING"
+                echo "Ran update for $1 ON $(date)" >> /home/plug/mirror-updatelog
+        fi
+
+}
+
 #Raspbian
 startUpdateApt "raspbian" "archive.raspbian.org::archive/raspbian/"
 
@@ -174,3 +189,8 @@ unset RSYNC_PASSWORD
 #CBSD
 startUpdateCBSD "iso" "electro.bsdstore.ru::iso"
 startUpdateCBSD "cloud" "electro.bsdstore.ru::cloud"
+
+#Blender
+startUpdateBLENDER "release" "download.blender.org::blender-release"
+startUpdateBLENDER "source" "download.blender.org::blender-source"
+startUpdateBLENDER "demo" "download.blender.org::blender-demo"
